@@ -13,25 +13,38 @@ angular.module('starter.controllers', [])
 })
 
 .controller('testProcessCtrl', function($scope, $state) {
+
+  $scope.goBack = function() {
+    $state.go('tab.home');
+  }
+
   $scope.startTesting = function() {
     showProgress();
     setTimeout( 
-    function() {
-      var startFactorial = new Date().getTime();
-      console.log(factorial(1000000));
-      var endFactorial = new Date().getTime();
-      var timeFactorial = endFactorial - startFactorial;
-      console.log('Execution time: ' + timeFactorial);
-      var startCount = new Date().getTime();
-      console.log(count(50000));
-      var endCount = new Date().getTime();
-      var timeCount = endCount - startCount;
-      console.log('Execution time: ' + timeCount);
-    }, 3000);
+      function() {
+        var startFactorial = new Date().getTime();
+        console.log(factorial(5));
+        var endFactorial = new Date().getTime();
+        var timeFactorial = endFactorial - startFactorial;
+        console.log('Execution time: ' + timeFactorial);
+
+        var startCount = new Date().getTime();
+        console.log(count(5));
+        var endCount = new Date().getTime();
+        var timeCount = endCount - startCount;
+        console.log('Execution time: ' + timeCount);
+
+        var startGcd = new Date().getTime();
+        console.log(gcd(5005, 2222));
+        var endGcd = new Date().getTime();
+        var timeGcd = endGcd - startGcd;
+        console.log('Execution time: ' + timeGcd);
+
+      }, 3000);
   }
 
   function showProgress() {
-    console.log("krenuo je");
+    document.getElementById('startTestingBtn').style.display = 'none';
     document.getElementById('firstText').style.display = 'none';
     document.getElementById('thirdText').style.display = 'none';
     document.getElementById('secondText').style.display = 'block';
@@ -39,7 +52,6 @@ angular.module('starter.controllers', [])
   }
 
   function endTesting() {
-    console.log('gotovo');
     document.getElementById('loading').style.display = 'none';
     document.getElementById('secondText').style.display = 'none';
     document.getElementById('thirdText').style.display = 'block';
@@ -62,8 +74,13 @@ angular.module('starter.controllers', [])
     return count;
   }
 
-  function test(n, m) {
-
+  function gcd(n, m) {
+    while (m != 0) {
+      temp = m;
+      m = n % m;
+      n = temp;
+    }
+    return n;
   }
 })
 
