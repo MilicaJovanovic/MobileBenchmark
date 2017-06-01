@@ -1,0 +1,15 @@
+<ion-view view-title="Mobile Benchmark" hide-nav-bar="true">
+  <ion-content class="padding homeBackground">
+  	  <div class="testProcessText" style="margin-top: 100px;">
+  	  	<p class="homeLargeText">WELCOME</p>
+	    <p class="homeLargeText">PLEASE SET DEVICE'S NAME</p>
+	  </div>
+	  <hr class="testProcessLine">
+	  <div class="inputField">
+	  	<i class="ion-iphone inputIcon"></i>
+	  	<input type="text" value="" ng-model="data.name" placeholder="Device's name" class="userInput">
+	  </div>
+	  <button id="saveResultBtn" class="testBtn" ng-click="setName()">GO</button>
+	  <div class="saveDesc">Create device's name so you can use testing history</div>
+  </ion-content>
+</ion-view>

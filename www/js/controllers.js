@@ -94,7 +94,9 @@ angular.module('starter.controllers', [])
   }
 
   $scope.saveResult = function() {
-    $state.go('tab.saveResult');
+    console.log("saved");
+    // $scope.marks = $localStorage.marks;
+    // console.log($scope.marks);
   }
 
   function rateFactorial(time) {
@@ -202,20 +204,17 @@ angular.module('starter.controllers', [])
   console.log($scope.marks);
 })
 
-.controller('saveResultCtrl', function($scope, $state) {
+.controller('indexCtrl', function($scope, $state) {
 
   $scope.data = {
     name : ''
   } 
-
-  $scope.goBack = function() {
-    $state.go('tab.testProcess');
-  }
   
-  $scope.saveResult = function() {
+  $scope.setName = function() {
     console.log($scope.data.name);
     console.log("saved");
     // $scope.marks = $localStorage.marks;
     // console.log($scope.marks);
+    $state.go('tab.home');
   }
 });

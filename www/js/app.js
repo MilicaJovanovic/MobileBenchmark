@@ -39,6 +39,15 @@ angular.module('starter', ['ionic', 'ngStorage', 'starter.controllers', 'starter
   })
 
   // Each tab has its own nav history stack:
+  .state('tab.index', {
+    url: '/index',
+    views: {
+      'tab-index': {
+        templateUrl: 'templates/index.html',
+        controller: 'indexCtrl'
+      }
+    }
+  })
   .state('tab.home', {
     url: '/home',
     views: {
@@ -65,18 +74,9 @@ angular.module('starter', ['ionic', 'ngStorage', 'starter.controllers', 'starter
         controller: 'historyCtrl'
       }
     }
-  })
-  .state('tab.saveResult', {
-    url: '/saveResult',
-    views: {
-      'tab-saveResult': {
-        templateUrl: 'templates/saveResult.html',
-        controller: 'saveResultCtrl'
-      }
-    }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/home');
+  $urlRouterProvider.otherwise('/tab/index');
 
 });
