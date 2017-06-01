@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('HomeCtrl', function($scope, $state) {
+.controller('homeCtrl', function($scope, $state) {
   
   $scope.startTesting = function() {
     $state.go('tab.testProcess');
@@ -19,10 +19,13 @@ angular.module('starter.controllers', [])
 
   $scope.startTesting = function() {
     showProgress();
-    $scope.markFactorial = 0;
-    $scope.markCount = 0;
-    $scope.markGcd = 0;
-    $scope.finalMark = 0;
+    $scope.marks = {
+      markFactorial : 0,
+      markCount : 0,
+      markGcd : 0,
+      finalMark : 0
+    }
+
     setTimeout( 
       function() {
         var startFactorial = new Date().getTime();
@@ -30,27 +33,28 @@ angular.module('starter.controllers', [])
         var endFactorial = new Date().getTime();
         var timeFactorial = endFactorial - startFactorial;
         console.log('Execution time: ' + timeFactorial);
-        $scope.markFactorial = rateFactorial(timeFactorial);
-        console.log($scope.markFactorial);
+        $scope.marks.markFactorial = rateFactorial(timeFactorial);
+        console.log($scope.marks.markFactorial);
 
         var startCount = new Date().getTime();
         console.log(count(1000));
         var endCount = new Date().getTime();
         var timeCount = endCount - startCount;
         console.log('Execution time: ' + timeCount);
-        $scope.markCount = rateCount(timeCount);
-        console.log($scope.markCount);
+        $scope.marks.markCount = rateCount(timeCount);
+        console.log($scope.marks.markCount);
 
         var startGcd = new Date().getTime();
         console.log(gcd(5005, 2222));
         var endGcd = new Date().getTime();
         var timeGcd = endGcd - startGcd;
         console.log('Execution time: ' + timeGcd);
-        $scope.markGcd = rateGcd(timeGcd);
-        console.log($scope.markGcd);
+        $scope.marks.markGcd = rateGcd(timeGcd);
+        console.log($scope.marks.markGcd);
 
-        $scope.finalMark = ($scope.markFactorial + $scope.markCount + $scope.markGcd) / 3;
-        console.log($scope.finalMark);
+        $scope.marks.finalMark = ($scope.marks.markFactorial + $scope.marks.markCount + $scope.marks.markGcd) / 3;
+        console.log($scope.marks.finalMark);
+        // $localStorage.marks = $scope.marks;
         document.getElementById('result').style.display = 'block';
       }, 3000);
   }
@@ -60,6 +64,9 @@ angular.module('starter.controllers', [])
     document.getElementById('startTestingBtn').style.display = 'none';
     document.getElementById('firstText').style.display = 'none';
     document.getElementById('thirdText').style.display = 'none';
+    document.getElementById('saveBtn').style.display = 'none';
+    document.getElementById('testSeparator').style.display = 'none';
+    document.getElementById('runAgainBtn').style.display = 'none';
     document.getElementById('secondText').style.display = 'block';
     document.getElementById('loading').style.display = 'block';
   }
@@ -67,8 +74,27 @@ angular.module('starter.controllers', [])
   function endTesting() {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('secondText').style.display = 'none';
+    document.getElementById('testSeparator').style.display = 'block';
+    document.getElementById('runAgainBtn').style.display = 'block';
+    document.getElementById('saveBtn').style.display = 'block';
     document.getElementById('thirdText').style.display = 'block';
     document.getElementById('result').style.display = 'block';
+  }
+
+  $scope.runAgain = function() {
+    document.getElementById('startTestingBtn').style.display = 'block';
+    document.getElementById('firstText').style.display = 'block';
+    document.getElementById('result').style.display = 'none';
+    document.getElementById('secondText').style.display = 'none';
+    document.getElementById('thirdText').style.display = 'none';
+    document.getElementById('saveBtn').style.display = 'none';
+    document.getElementById('testSeparator').style.display = 'none';
+    document.getElementById('runAgainBtn').style.display = 'none';
+    document.getElementById('loading').style.display = 'none';
+  }
+
+  $scope.saveResult = function() {
+    $state.go('tab.saveResult');
   }
 
   function rateFactorial(time) {
@@ -151,4 +177,22 @@ angular.module('starter.controllers', [])
 
 .controller('historyCtrl', function($scope, $state) {
  
+})
+
+.controller('saveResultCtrl', function($scope, $state) {
+
+  $scope.data = {
+    name : ''
+  } 
+
+  $scope.goBack = function() {
+    $state.go('tab.testProcess');
+  }
+  
+  $scope.saveResult = function() {
+    console.log($scope.data.name);
+    console.log("saved");
+    // $scope.marks = $localStorage.marks;
+    // console.log($scope.marks);
+  }
 });

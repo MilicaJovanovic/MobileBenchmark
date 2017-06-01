@@ -21,11 +21,19 @@
 	  	<img src="../img/loading.gif" id="loading">
 	  </div>
 	  <div id="result">
-	  	<p class="marks">Test 1: {{ markFactorial }} </p>
-	  	<p class="marks">Test 2: {{ markCount }} </p>
-	  	<p class="marks">Test 3: {{ markGcd }} </p>
-	  	<p class="finalMark">Final mark: {{ finalMark }} </p>
+	  	<p class="marks">Test 1: {{ marks.markFactorial }} </p>
+	  	<p class="marks">Test 2: {{ marks.markCount }} </p>
+	  	<p class="marks">Test 3: {{ marks.markGcd }} </p>
+	  	<p class="finalMark">Final mark: {{ marks.finalMark }} </p>
 	  </div>
+	  <button id="saveBtn" class="testBtn" ng-click="saveResult()">SAVE RESULT</button>
+	  <div class="homeSeparator" id="testSeparator">
+	    <hr class="homeSeparatorLine">
+	    <p class="homeSeparatorText"> OR </p>
+	    <hr class="homeSeparatorLine">
+	  </div>	
+	  <button id="runAgainBtn" class="testBtn" ng-click="runAgain()">RUN TESTS AGAIN</button>
+	  
 	  <!-- <div class="inputFieldEmailLogin">
 	  	<i class="ion-email loginIcon"></i>
 	  	<input type="text" value="" placeholder="Email" class="userInputEmailLogin">

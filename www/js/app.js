@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'ngStorage', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -44,7 +44,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-home': {
         templateUrl: 'templates/home.html',
-        controller: 'HomeCtrl'
+        controller: 'homeCtrl'
       }
     }
   })
@@ -63,6 +63,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       'tab-history': {
         templateUrl: 'templates/history.html',
         controller: 'historyCtrl'
+      }
+    }
+  })
+  .state('tab.saveResult', {
+    url: '/saveResult',
+    views: {
+      'tab-saveResult': {
+        templateUrl: 'templates/saveResult.html',
+        controller: 'saveResultCtrl'
       }
     }
   });

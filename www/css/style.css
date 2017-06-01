@@ -41,6 +41,7 @@
 	font-size: 1.4em;
 	font-weight: bold;
 	padding-top: 15px;
+	border-radius: 5px;
 }
 .homeBtnLower {
 	margin-top: 60px;
@@ -102,10 +103,67 @@
 	color: #f1c40f;
 	margin-top: 30px;
 }
+.testBtn {
+	width: 80%;
+	background-color: #5D5F78;
+	margin-left: 10%;
+	height: 50px;
+	margin-top: 30px;
+	display: none;
+	border: none;
+	color: white;
+	border-radius: 5px;
+}
+#testSeparator {
+	display: none;
+}
+/*Save results history*/
+.inputField {
+	width: 80%;
+	background-color: #5D5F78;
+	margin-left: 10%;
+	height: 50px;
+	margin-top: 20px;
+	display: block;
+}
+.inputIcon {
+	float: left;
+	display: block;
+	width: 20%;
+	margin-left: 5%;
+	margin-top: 8px;
+	font-size: 2.6em;
+	color: #212342;
+}
+.userInput {
+	float: left;
+	display: block;
+	width: 75%;
+	border: none;
+	height: 50px !important;
+	font-size: 1.6em;
+	color: white !important;
+	background-color: transparent;
+	border-radius: 5px;
+}
+.saveDesc {
+	text-align: center;
+	color: white;
+	margin-top: 20px;
+	font-size: 1.2em;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 30px;
+}
+#saveResultBtn {
+	font-weight: bold;
+	margin-top: 30px;
+	display: block;
+}
 
 
 
-.inputFieldLogin {
+/*.inputFieldLogin {
 	width: 80%;
 	background-color: #5D5F78;
 	margin-left: 10%;
@@ -131,9 +189,9 @@
 	font-size: 1.6em;
 	color: white !important;
 	background-color: transparent;
-}
+}*/
 /*Email login style*/
-.inputFieldEmailLogin {
+/*.inputFieldEmailLogin {
 	width: 80%;
 	background-color: #5D5F78;
 	margin-left: 10%;
@@ -167,7 +225,7 @@
 	color: white;
 	margin-top: 20px;
 	font-size: 1.2em;
-}
+}*/
 .arrowBack {
 	width: 100%;
 	margin-left: 10%;
