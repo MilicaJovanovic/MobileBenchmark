@@ -1,24 +1,31 @@
 <ion-view view-title="Mobile Benchmark" hide-nav-bar="true">
   <ion-content class="padding homeBackground">
-  	  <!-- <div class="arrowBack">
+  	  <div class="arrowBack">
   	  	<i class="ion-arrow-left-c arrowBackIcon" ng-click="goBack()"></i>
-  	  </div> -->
-	  <div class="homeText">
-	    <p class="homeSmallText">TEST</p>
-	    <p class="homeLargeText">YOUR PHONE</p>
-	    <p class="homeLargeText">PERFORMANCES</p>
+  	  </div>
+	  <div class="homeText" style="margin-top: 10px;">
+	    <p class="homeLargeText">TESTING HISTORY</p>
 	  </div>
 	  <hr class="homeLine">
-	  <div class="homeBtn" ng-click="startTesting()">START TESTING</div>
+	  <div ng-repeat="mark in marks">
+	  	 <div class="eachMark">
+		  	<p class="historyDate">Testing date: {{ mark.updateTimestamp }} </p>
+		  	<p class="historyMarks">Test 1: {{ mark.markFactorial }} </p>
+		  	<p class="historyMarks">Test 2: {{ mark.markCount }} </p>
+		  	<p class="historyMarks">Test 3: {{ mark.markGcd }} </p>
+		  	<p class="historyFinalMark">Final mark: {{ mark.finalMark }} </p>
+		  </div>
+	  </div>
+	 <!--  <div class="homeBtn" ng-click="startTesting()">START TESTING</div>
 	  <div class="homeSeparator">
 	    <hr class="homeSeparatorLine">
 	    <p class="homeSeparatorText"> OR </p>
 	    <hr class="homeSeparatorLine">
-	  </div>
+	  </div> -->
 	  <!-- <div class="inputFieldLogin">
 	  	<i class="ion-email loginIcon"></i>
 	  	<input type="text" value="" placeholder="Email" class="userInputLogin" ng-click="showEmailLogin()">
 	  </div> -->
-	  <div class="homeBtn homeBtnLower" ng-click="showHistory()">VIEW PREVIOUS RESULTS</div>
+	  <!-- <div class="homeBtn homeBtnLower" ng-click="showHistory()">VIEW PREVIOUS RESULTS</div> -->
   </ion-content>
 </ion-view>

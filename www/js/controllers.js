@@ -176,7 +176,30 @@ angular.module('starter.controllers', [])
 })
 
 .controller('historyCtrl', function($scope, $state) {
- 
+  $scope.goBack = function() {
+    $state.go('tab.home');
+  }
+
+  $scope.marks = [];
+  $scope.mark1 = {
+    markFactorial : 5,
+    markCount : 5,
+    markGcd : 1,
+    finalMark : 4,
+    deviceName : '',
+    updateTimestamp : '05.03.2017.'
+  }
+  $scope.marks.push($scope.mark1);
+  $scope.mark2 = {
+    markFactorial : 2,
+    markCount : 2,
+    markGcd : 1,
+    finalMark : 2,
+    deviceName : '',
+    updateTimestamp : '04.03.2017.'
+  }
+  $scope.marks.push($scope.mark2);
+  console.log($scope.marks);
 })
 
 .controller('saveResultCtrl', function($scope, $state) {

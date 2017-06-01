@@ -160,7 +160,26 @@
 	margin-top: 30px;
 	display: block;
 }
-
+/*History style*/
+.eachMark {
+	display: block;
+	width: 80%;
+	text-align: left;
+	margin-left: 10%;
+	margin-bottom: 40px;
+}
+.historyMarks {
+	font-size: 1.2em;
+	color: white;
+}
+.historyDate {
+	font-size: 1.6em;
+	color: white;
+}
+.historyFinalMark {
+	font-size: 1.6em;
+	color: #f1c40f;
+}
 
 
 /*.inputFieldLogin {
