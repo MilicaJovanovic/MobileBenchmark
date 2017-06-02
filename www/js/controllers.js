@@ -52,7 +52,7 @@ angular.module('starter.controllers', [])
         $scope.marks.markGcd = rateGcd(timeGcd);
         console.log($scope.marks.markGcd);
 
-        $scope.marks.finalMark = ($scope.marks.markFactorial + $scope.marks.markCount + $scope.marks.markGcd) / 3;
+        $scope.marks.finalMark = Math.round(($scope.marks.markFactorial + $scope.marks.markCount + $scope.marks.markGcd) / 3);
         console.log($scope.marks.finalMark);
 
         localStorage.setItem("marks", JSON.stringify($scope.marks));
@@ -206,28 +206,9 @@ angular.module('starter.controllers', [])
     $state.go('tab.home');
   }
 
-  // $scope.marks = [];
-  // $scope.mark1 = {
-  //   markFactorial : 5,
-  //   markCount : 5,
-  //   markGcd : 1,
-  //   finalMark : 4,
-  //   deviceName : '',
-  //   updateTimestamp : '05.03.2017.'
-  // }
-  // $scope.marks.push($scope.mark1);
-  // $scope.mark2 = {
-  //   markFactorial : 2,
-  //   markCount : 2,
-  //   markGcd : 1,
-  //   finalMark : 2,
-  //   deviceName : '',
-  //   updateTimestamp : '04.03.2017.'
-  // }
-  // $scope.marks.push($scope.mark2);
-  // console.log($scope.marks);
-
   var link = 'http://localhost:8080'; 
+
+  $scope.marks;
 
   var readHistory = function(input) {
     return $http({
@@ -242,6 +223,7 @@ angular.module('starter.controllers', [])
   readHistory($scope.data.name)
   .success(function(result) {
     console.log(result);
+    $scope.marks = result;
   })
   .error(function(error) {
     console.log(error);

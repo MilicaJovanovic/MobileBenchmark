@@ -9,7 +9,7 @@
 	  <hr class="homeLine">
 	  <div ng-repeat="mark in marks">
 	  	 <div class="eachMark">
-		  	<p class="historyDate">Testing date: {{ mark.updateTimestamp }} </p>
+		  	<p class="historyDate">Testing date: {{ mark.updateTimestamp | date }} </p>
 		  	<p class="historyMarks">Test 1: {{ mark.markFactorial }} </p>
 		  	<p class="historyMarks">Test 2: {{ mark.markCount }} </p>
 		  	<p class="historyMarks">Test 3: {{ mark.markGcd }} </p>
