@@ -11,7 +11,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('testProcessCtrl', function($scope, $state) {
+.controller('testProcessCtrl', function($scope, $state, $http) {
 
   $scope.goBack = function() {
     $state.go('tab.home');
@@ -54,7 +54,8 @@ angular.module('starter.controllers', [])
 
         $scope.marks.finalMark = ($scope.marks.markFactorial + $scope.marks.markCount + $scope.marks.markGcd) / 3;
         console.log($scope.marks.finalMark);
-        // $localStorage.marks = $scope.marks;
+
+        localStorage.setItem("marks", JSON.stringify($scope.marks));
         document.getElementById('result').style.display = 'block';
       }, 3000);
   }
@@ -93,10 +94,33 @@ angular.module('starter.controllers', [])
     document.getElementById('loading').style.display = 'none';
   }
 
+  var link = 'http://localhost:8080'; 
+
+  var createHistory = function(input) {
+    return $http.post(link + '/createHistory', input);
+  }
+
   $scope.saveResult = function() {
-    console.log("saved");
-    // $scope.marks = $localStorage.marks;
-    // console.log($scope.marks);
+    $scope.data = JSON.parse(localStorage.getItem("data"));
+    $scope.marks = JSON.parse(localStorage.getItem("marks"));
+
+    $scope.history  = {
+      deviceName : $scope.data.name,
+      markFactorial : $scope.marks.markFactorial,
+      markCount : $scope.marks.markCount,
+      markGcd : $scope.marks.markGcd,
+      finalMark : $scope.marks.finalMark
+    }
+
+    createHistory($scope.history)
+    .success(function(result) {
+      console.log("saved");
+      localStorage.removeItem("marks");
+      document.getElementById("saveBtn").disabled = true;
+    })
+    .error(function(error) {
+      console.log(error);
+    });
   }
 
   function rateFactorial(time) {
@@ -177,31 +201,51 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('historyCtrl', function($scope, $state) {
+.controller('historyCtrl', function($scope, $state, $http) {
   $scope.goBack = function() {
     $state.go('tab.home');
   }
 
-  $scope.marks = [];
-  $scope.mark1 = {
-    markFactorial : 5,
-    markCount : 5,
-    markGcd : 1,
-    finalMark : 4,
-    deviceName : '',
-    updateTimestamp : '05.03.2017.'
+  // $scope.marks = [];
+  // $scope.mark1 = {
+  //   markFactorial : 5,
+  //   markCount : 5,
+  //   markGcd : 1,
+  //   finalMark : 4,
+  //   deviceName : '',
+  //   updateTimestamp : '05.03.2017.'
+  // }
+  // $scope.marks.push($scope.mark1);
+  // $scope.mark2 = {
+  //   markFactorial : 2,
+  //   markCount : 2,
+  //   markGcd : 1,
+  //   finalMark : 2,
+  //   deviceName : '',
+  //   updateTimestamp : '04.03.2017.'
+  // }
+  // $scope.marks.push($scope.mark2);
+  // console.log($scope.marks);
+
+  var link = 'http://localhost:8080'; 
+
+  var readHistory = function(input) {
+    return $http({
+      url: link + '/readHistoryByName',
+      method: 'GET',
+      params: {deviceName: input}
+    });
   }
-  $scope.marks.push($scope.mark1);
-  $scope.mark2 = {
-    markFactorial : 2,
-    markCount : 2,
-    markGcd : 1,
-    finalMark : 2,
-    deviceName : '',
-    updateTimestamp : '04.03.2017.'
-  }
-  $scope.marks.push($scope.mark2);
-  console.log($scope.marks);
+
+  $scope.data = JSON.parse(localStorage.getItem("data"));
+
+  readHistory($scope.data.name)
+  .success(function(result) {
+    console.log(result);
+  })
+  .error(function(error) {
+    console.log(error);
+  });
 })
 
 .controller('indexCtrl', function($scope, $state) {
@@ -212,9 +256,7 @@ angular.module('starter.controllers', [])
   
   $scope.setName = function() {
     console.log($scope.data.name);
-    console.log("saved");
-    // $scope.marks = $localStorage.marks;
-    // console.log($scope.marks);
+    localStorage.setItem("data", JSON.stringify($scope.data));
     $state.go('tab.home');
   }
 });
