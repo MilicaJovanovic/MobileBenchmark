@@ -52,7 +52,8 @@ angular.module('starter.controllers', [])
         $scope.marks.markGcd = rateGcd(timeGcd);
         console.log($scope.marks.markGcd);
 
-        $scope.marks.finalMark = Math.round(($scope.marks.markFactorial + $scope.marks.markCount + $scope.marks.markGcd) / 3);
+        $scope.marks.finalMark = (($scope.marks.markFactorial + $scope.marks.markCount + $scope.marks.markGcd) / 3);;
+        $scope.marks.finalMark = $scope.marks.finalMark.toFixed(2);
         console.log($scope.marks.finalMark);
 
         localStorage.setItem("marks", JSON.stringify($scope.marks));
