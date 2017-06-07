@@ -94,7 +94,7 @@ angular.module('starter.controllers', [])
     document.getElementById('loading').style.display = 'none';
   }
 
-  var link = 'http://localhost:8080'; 
+  var link = 'http://192.168.200.68:8080'; 
 
   var createHistory = function(input) {
     return $http.post(link + '/createHistory', input);
@@ -159,15 +159,15 @@ angular.module('starter.controllers', [])
 
   function rateGcd(time) {
     var mark = 0;
-    if (time <= 2) {
+    if (time <= 4) {
         mark = 5;
-    } else if (time > 2 && time < 4) {
+    } else if (time > 4 && time <= 6) {
         mark = 4;
-    } else if (time > 4 && time < 6) {
+    } else if (time > 6 && time <= 8) {
         mark = 3;
-    } else if (time > 6 && time < 8) {
+    } else if (time > 8 && time <= 10) {
         mark = 2;
-    } else if (time > 8) {
+    } else if (time > 10) {
         mark = 1;
     }
 
@@ -206,7 +206,7 @@ angular.module('starter.controllers', [])
     $state.go('tab.home');
   }
 
-  var link = 'http://localhost:8080'; 
+  var link = 'http://192.168.200.68:8080'; 
 
   $scope.marks;
 
