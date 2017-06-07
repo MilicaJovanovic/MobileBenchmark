@@ -144,13 +144,13 @@ angular.module('starter.controllers', [])
     var mark = 0;
     if (time <= 5) {
         mark = 5;
-    } else if (time > 5 && time < 8) {
+    } else if (time > 5 && time <= 9) {
         mark = 4;
-    } else if (time > 8 && time < 12) {
+    } else if (time > 9 && time <= 13) {
         mark = 3;
-    } else if (time > 12 && time < 15) {
+    } else if (time > 13 && time <= 16) {
         mark = 2;
-    } else if (time > 15) {
+    } else if (time > 16) {
         mark = 1;
     }
 
